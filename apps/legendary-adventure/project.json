@@ -1,0 +1,84 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/legendary-adventure/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/legendary-adventure",
+        "index": "apps/legendary-adventure/src/index.html",
+        "baseHref": "/",
+        "main": "apps/legendary-adventure/src/main.tsx",
+        "polyfills": "apps/legendary-adventure/src/polyfills.ts",
+        "tsConfig": "apps/legendary-adventure/tsconfig.app.json",
+        "assets": [
+          "apps/legendary-adventure/src/favicon.ico",
+          "apps/legendary-adventure/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/legendary-adventure/src/environments/environment.ts",
+              "with": "apps/legendary-adventure/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "legendary-adventure:build",
+        "hmr": true,
+        "proxyConfig": "apps/legendary-adventure/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "legendary-adventure:build:development"
+        },
+        "production": {
+          "buildTarget": "legendary-adventure:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/legendary-adventure/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/legendary-adventure"],
+      "options": {
+        "jestConfig": "apps/legendary-adventure/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
