@@ -17,7 +17,8 @@
     "paths": {
       "@legendary-adventure/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@legendary-adventure/data-access": ["libs/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -4,6 +4,7 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "data-access": "libs/data-access",
     "legendary-adventure": "apps/legendary-adventure",
     "legendary-adventure-e2e": "apps/legendary-adventure-e2e"
   }
