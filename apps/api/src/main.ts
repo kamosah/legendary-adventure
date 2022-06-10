@@ -34,13 +34,15 @@ async function startApolloServer(typeDefs, resolvers) {
     resolvers,
     csrfPrevention: true,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    // mocks: true
   });
   await server.start();
   server.applyMiddleware({ app });
   const port = process.env.port || 3333;
   await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
   console.log(
-    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}
+     📭 Query at https://studio.apollographql.com/dev`
   );
 }
 
